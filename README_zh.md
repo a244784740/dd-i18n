@@ -1,5 +1,6 @@
 # dd-i18n
 简体中文 | [English](./README.md)
+npm 地址:https://www.npmjs.com/package/dd-i18n
 # 使用
 ```
 npm i dd-i18n
