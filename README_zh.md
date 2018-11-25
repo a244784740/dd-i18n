@@ -1,36 +1,36 @@
 # dd-i18n
-English | [简体中文](./README.zh_CN.md)
-# use
+简体中文 | [English](./README.md)
+# 使用
 ```
 npm i dd-i18n
 
 import DI18n from 'dd-i18n';
 
 var di18n = new DI18n({
-  // System current language
+  // 系统当前语言
   local: 'zh-CN',
-  // Default language for translation
+  // 翻译的默认语言
   defaultLang: 'zh-CN',
-  // Language pack
+  // 语言包
   messages
 })
 ```
-## dd-i18n Analysis
-* dl:According to the incoming string, get the corresponding translation. If the language package is not set, return the incoming string.
+## dd-i18n解析
+* dl:根据传入的字符串，获取对应的翻译.若语言包内未设置，返回传入的字符串
 
-* dEvent:Global observer method object
+* dEvent:全局观察器方法对象
 
-   * dEvent.trigger make an announcement  
+   * dEvent.trigger 发布消息  
    ```
    this.dEvent.trigger('lang','en');
    ```
-   * dEvent.listen Subscription message
+   * dEvent.listen 订阅消息
    ```
    this.dEvent.listen('lang',msg => {
-        console.log(msg);  // Print en
+        console.log(msg);  // 打印en
   });
    ```
-## Language pack format
+## 语言包格式
 ```
 var messages = {
   'zh-CN': {
@@ -84,25 +84,25 @@ var messages = {
 }
 ```
 
-## js Use in
+## js 里的使用
 
 ```
 var di18n = new DI18n({
-  // System current language
+  // 系统当前语言
   local: 'zh-CN',
-  // Default language for translation
+  // 翻译的默认语言
   defaultLang: 'zh-CN',
-  // Language pack
+  // 语言包
   messages
 })
-// Set the current system language
+// 设置当前系统语言
 di18n.local = 'en'; 
 console.log(di18n.dl('你好世界'));//Hello world
 
 ```
 
 
-## Use in vue
+## vue里的使用
 
 ### main.js
 ```
@@ -112,7 +112,7 @@ Vue.prototype.dEvent = di18n.dEvent;
 ```
 ### Hello.vue
 ```
-// Usage in the template
+// template里的用法
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -163,7 +163,7 @@ export default {
     }
   },
   mounted() {
-    // Subscription message
+    // 订阅消息
     this.dEvent.listen('lang', msg => {
       this.msg = this.dl('你好世界');
       this.list = [
@@ -189,7 +189,7 @@ export default {
     lang:function(newLang,oldLang) {
 
       this.$di18n.local = newLang;
-      // make an announcement
+      // 发布消息
       this.dEvent.trigger('lang',newLang);
     }
   }
